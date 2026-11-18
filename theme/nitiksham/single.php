@@ -1,0 +1,3 @@
+<?php /** Single post. @package Nitiksham */ get_header(); ?>
+<main id="main-content" class="inner-page shell"><?php while ( have_posts() ) : the_post(); ?><article <?php post_class(); ?>><header class="inner-page-title"><div class="eyebrow"><span class="eyebrow-line"></span><?php echo esc_html( get_the_date() ); ?></div><h1><?php the_title(); ?></h1></header><div class="entry-content"><?php if ( has_post_thumbnail() ) : the_post_thumbnail( 'full' ); endif; the_content(); wp_link_pages(); ?></div><div class="post-pagination"><?php the_post_navigation(); ?></div></article><?php endwhile; ?></main>
+<?php get_footer(); ?>
