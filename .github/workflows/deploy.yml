@@ -20,7 +20,7 @@ jobs:
       - name: Deploy only the Nitiksham theme
         uses: godaddy-wordpress/gd-wordpress-deployer@v1
         with:
-          remote_host: "1322647.eu11.myftpupload.com"
+          remote_host: "1322647.eu11.ssh.myftpupload.com"
           ssh_user: "git_deployer_9936f3e02e_1322647"
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
           source_path: "wordpress/wp-content/themes/nitiksham-original-v2"
@@ -31,7 +31,7 @@ jobs:
       - name: Deploy only the Studio plugin
         uses: godaddy-wordpress/gd-wordpress-deployer@v1
         with:
-          remote_host: "1322647.eu11.myftpupload.com"
+          remote_host: "1322647.eu11.ssh.myftpupload.com"
           ssh_user: "git_deployer_9936f3e02e_1322647"
           ssh_private_key: ${{ secrets.PRIVATE_KEY }}
           source_path: "wordpress/wp-content/plugins/nitiksham-studio"
