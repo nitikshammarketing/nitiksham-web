@@ -3,6 +3,10 @@ name: Deploy Nitiksham Logo Only (manual)
 # Temporary narrowly-scoped recovery for the GoDaddy deployer error.
 # Does not touch WordPress database, plugin, uploads, or unrelated theme files.
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/logo-release-once.txt"
   workflow_dispatch:
     inputs:
       mode:
@@ -92,7 +96,7 @@ jobs:
           echo "Dry-run complete. No files changed."
 
       - name: Copy only the approved logo-related files
-        if: ${{ inputs.mode == 'deploy' }}
+        if: ${{ inputs.mode == 'deploy' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
         shell: bash
         run: |
           set -euo pipefail
@@ -105,7 +109,7 @@ jobs:
             "git_deployer_9936f3e02e_1322647@1322647.eu11.ssh.myftpupload.com:/html/wp-content/themes/nitiksham-original-v2/"
 
       - name: Verify deployed logo asset checksums
-        if: ${{ inputs.mode == 'deploy' }}
+        if: ${{ inputs.mode == 'deploy' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
         shell: bash
         run: |
           set -euo pipefail
