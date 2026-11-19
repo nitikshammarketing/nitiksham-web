@@ -1,24 +1,40 @@
-name: Deploy WordPress to GoDaddy via rsync
+name: Deploy Nitiksham theme and plugin to GoDaddy (manual)
+
+# Intentionally manual until the GitHub source matches the live WordPress installation.
 on:
   workflow_dispatch:
-    inputs:
-      deployment_dest:
-        description: 'Target server directory, leave blank for root directory'
-        required: false
-        default: ''
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository Code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Synchronize Files with GoDaddy WordPress Hosting Server
+      - name: Verify theme and plugin source exists
+        shell: bash
+        run: |
+          test -f wordpress/wp-content/themes/nitiksham-original-v2/style.css || { echo "Theme source missing: do not deploy"; exit 1; }
+          test -f wordpress/wp-content/plugins/nitiksham-studio/nitiksham-studio.php || { echo "Plugin source missing: do not deploy"; exit 1; }
+
+      - name: Deploy only the Nitiksham theme
         uses: godaddy-wordpress/gd-wordpress-deployer@v1
         with:
           remote_host: "1322647.eu11.myftpupload.com"
           ssh_user: "git_deployer_9936f3e02e_1322647"
-          ssh_private_key: ${{secrets.PRIVATE_KEY}}
-          deployment_dest: ${{ github.event.inputs.deployment_dest }}
+          ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+          source_path: "wordpress/wp-content/themes/nitiksham-original-v2"
+          deployment_dest: "wp-content/themes/nitiksham-original-v2"
+          cleanup_deleted_files: "no"
+          enable_health_check: "yes"
+
+      - name: Deploy only the Studio plugin
+        uses: godaddy-wordpress/gd-wordpress-deployer@v1
+        with:
+          remote_host: "1322647.eu11.myftpupload.com"
+          ssh_user: "git_deployer_9936f3e02e_1322647"
+          ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+          source_path: "wordpress/wp-content/plugins/nitiksham-studio"
+          deployment_dest: "wp-content/plugins/nitiksham-studio"
+          cleanup_deleted_files: "no"
+          enable_health_check: "yes"
