@@ -2,8 +2,179 @@
 /** Preserved Nitiksham site page — WordPress runtime wrapper, original visual markup. */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 ?>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The studio | Nitiksham</title><meta name="description" content="Nitiksham is a strategy-led brand, design and digital marketing agency in Karnal. Explore branding, websites, SEO, social media and print."><meta name="theme-color" content="#f6f4ee"><link rel="icon" type="image/png" sizes="512x512" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-touch.png"><link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri() . '/assets/style.css'); ?>"><link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri() . '/assets/motion.css'); ?>"><link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri() . '/assets/cinematic.css'); ?>"><link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri() . '/assets/refined.css?v=20261119-logo'); ?>"><?php wp_head(); ?></head><body class="inner-page"><?php wp_body_open(); ?><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a href="/" class="logo" aria-label="Nitiksham home"><picture><source media="(max-width: 640px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-mark.png"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-brand.png" alt="Nitiksham — an idea driven agency" width="1240" height="308" decoding="async"></picture></a><a class="strategy-button" href="/contact-us/">Talk to a strategist <svg class="icon-arrow" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a><button class="menu-toggle" aria-label="Open menu" aria-controls="site-menu" aria-expanded="false">Menu <i></i></button></header><dialog class="mega-menu indri-menu" id="site-menu" aria-label="Main navigation"><div class="drawer-visual"><div class="menu-monogram" aria-hidden="true"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-mark.png" alt="" width="325" height="325" decoding="async"></div><div><span>NITIKSHAM / INDEPENDENT THINKING</span><h2>Thoughtful by design.</h2></div></div><div class="drawer-navigation"><button class="menu-close" aria-label="Close menu">×</button><span class="drawer-label">EXPLORE NITIKSHAM</span><div class="drawer-links"><a href="/">Home</a><details class="drawer-services"><summary>Our expertise <span>+</span></summary><div><a href="/services/">Explore all services</a><a href="/expertise/">Brand & design</a><a href="/expertise-web-development/">Website development</a><a href="/expertise-seo/">SEO</a><a href="/digital-marketing/">Digital marketing</a><a href="/copyright/">Copywriting & content</a><a href="/print/">Print & outdoor</a><a href="/social-media-marketing/">Social media</a></div></details><a href="/about-us/">Our story</a><a href="/team/">The collective</a><a href="/gallery/">Gallery & newsletters</a><a href="/software/">Software studio</a><a href="/login/">Studio login ↗</a><a href="/contact-us/">Contact</a></div><div class="drawer-contact"><span>LET’S CREATE SOMETHING.</span><a href="mailto:contact@nitiksham.com">contact@nitiksham.com</a><a href="tel:+917988567198">+91 79885 67198</a></div></div></dialog><div class="reading-progress" aria-hidden="true"></div><main id="main"><section class="page-head reveal" id="top"><span class="eyebrow">MEET NITIKSHAM</span><h1>Strategy at heart.<br><em>Creativity in motion.</em></h1><p>A multidisciplinary marketing agency connecting brands with the people who matter to them.</p></section><section class="about-strip reveal"><div><span class="eyebrow">THE THINKING BEHIND THE NAME</span><h2>Niti. Strategy.<br>Ksham. Capability.</h2><p>Our name brings together strategic thinking and the ability to execute. That’s how we approach every brief: understand the challenge, find the idea, and make it work across digital and traditional media.</p></div></section><section class="section"><div class="section-heading"><h2>Different skills.<br>Shared standards.</h2><p>Graphic designers, brand thinkers, web developers and marketers working towards a connected brand experience.</p></div><div class="values"><article><span>01</span><h3>Stay curious.</h3><p>Listen carefully. Ask better questions. Understand the business before proposing the solution.</p></article><article><span>02</span><h3>Be honest.</h3><p>Keep communication clear and decisions grounded in the needs of the project.</p></article><article><span>03</span><h3>Create together.</h3><p>Combine perspectives and work closely with you throughout the process.</p></article><article><span>04</span><h3>Think beyond launch.</h3><p>Create a foundation your brand can build on, across channels and over time.</p></article></div></section><section class="new-cta"><span class="eyebrow">MEET YOUR CREATIVE PARTNER</span><h2>Different minds.<br><em>One shared ambition.</em></h2><p>Bring your perspective. We’ll bring the questions that take it further.</p><a class="button" href="/contact-us/">Start a conversation ↗</a></section></main><footer class="new-footer"><div class="footer-grid"><div><a class="wordmark brand-wordmark" href="/" aria-label="Nitiksham home"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-brand.png" alt="Nitiksham — an idea driven agency" loading="lazy" decoding="async" width="1240" height="308"></a><p>Strategy, creativity and digital.<br>Different skills. One clear direction.</p></div><div><h3>Explore</h3><a href="/about-us/">About</a><a href="/services/">Expertise</a><a href="/team/">The collective</a><a href="/gallery/">Gallery & newsletters</a></div><div><h3>Say hello</h3><a href="mailto:contact@nitiksham.com">contact@nitiksham.com</a><a href="tel:+917988567198">+91 79885 67198</a><p>Ground floor, Spartan Gym,<br>Ramdev Colony, Sector 3 Part-2,<br>Karnal, Haryana 132001, India</p></div></div><div class="foot-bottom"><span>© 2026 Nitiksham. All rights reserved.</span><a href="/privacy/">Privacy & enquiries</a><a href="#top">Back to top ↑</a></div></footer><button class="motion-toggle" aria-pressed="false">Pause motion</button><script>window.NITIKSHAM=<?php echo wp_json_encode(array(
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>About Nitiksham | Brand &amp; Digital Agency, Karnal</title><meta name="description" content="Meet Nitiksham, a strategy-led brand and digital agency in Karnal, Haryana — who we are, how we work, and the values behind our branding and marketing work.">
+<link rel="canonical" href="https://nitiksham.com/about-us/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nitiksham">
+<meta property="og:title" content="About Nitiksham | Brand &amp; Digital Agency, Karnal">
+<meta property="og:description" content="Meet Nitiksham, a strategy-led brand and digital agency in Karnal, Haryana — who we are, how we work, and the values behind our branding and marketing work.">
+<meta property="og:url" content="https://nitiksham.com/about-us/">
+<meta property="og:image" content="https://nitiksham.com/wp-content/themes/nitiksham-original-v2/assets/img/about-us-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Nitiksham | Brand &amp; Digital Agency, Karnal">
+<meta name="twitter:description" content="Meet Nitiksham, a strategy-led brand and digital agency in Karnal, Haryana — who we are, how we work, and the values behind our branding and marketing work.">
+<meta name="twitter:image" content="https://nitiksham.com/wp-content/themes/nitiksham-original-v2/assets/img/about-us-hero.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nitiksham.com/#organization",
+      "name": "Nitiksham",
+      "url": "https://nitiksham.com/",
+      "email": "contact@nitiksham.com",
+      "telephone": "+91-79885-67198",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ground floor, Spartan Gym, Ramdev Colony, Sector 3 Part-2",
+        "addressLocality": "Karnal",
+        "addressRegion": "Haryana",
+        "postalCode": "132001",
+        "addressCountry": "IN"
+      },
+      "areaServed": [
+        "India",
+        "Worldwide"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://nitiksham.com/#localbusiness",
+      "name": "Nitiksham",
+      "url": "https://nitiksham.com/",
+      "email": "contact@nitiksham.com",
+      "telephone": "+91-79885-67198",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ground floor, Spartan Gym, Ramdev Colony, Sector 3 Part-2",
+        "addressLocality": "Karnal",
+        "addressRegion": "Haryana",
+        "postalCode": "132001",
+        "addressCountry": "IN"
+      },
+      "areaServed": [
+        "India",
+        "Worldwide"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Nitiksham do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nitiksham is a strategy-led brand, design and digital marketing agency in Karnal, Haryana. We offer seven connected services: brand and graphic design, website development, SEO, digital marketing, copywriting and content, print and outdoor advertising, and social media management."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Nitiksham based?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our studio is in Karnal, Haryana, at Ground floor, Spartan Gym, Ramdev Colony, Sector 3 Part-2, Karnal 132001. We work with clients across India and worldwide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the name Nitiksham mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nitiksham combines Niti, meaning strategy, and Ksham, meaning capability. It describes how we work: clear thinking, followed by the craft to make it real."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does a project with Nitiksham work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every project follows five stages: Discover, Plan, Build, Launch and Grow. We start by understanding your business and audience, agree a clear plan, build the work with your feedback, launch it carefully, and keep improving it afterwards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I start a project with Nitiksham?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Send an enquiry through our contact page, email contact@nitiksham.com or call +91 79885 67198. Tell us what you are building or changing, and we will take it from there."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nitiksham.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Us",
+          "item": "https://nitiksham.com/about-us/"
+        }
+      ]
+    }
+  ]
+}
+</script><meta name="theme-color" content="#f6f4ee"><link rel="icon" type="image/png" sizes="512x512" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-touch.png"><link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri() . '/assets/style.css'); ?>"><link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri() . '/assets/motion.css'); ?>"><link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri() . '/assets/cinematic.css'); ?>"><link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri() . '/assets/refined.css?v=20261119-logo'); ?>"><?php wp_head(); ?></head><body class="inner-page"><?php wp_body_open(); ?><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a href="/" class="logo" aria-label="Nitiksham home"><picture><source media="(max-width: 640px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-mark.png"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-brand.png" alt="Nitiksham — an idea driven agency" width="1240" height="308" decoding="async"></picture></a><a class="strategy-button" href="/contact-us/">Talk to a strategist <svg class="icon-arrow" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></svg></a><button class="menu-toggle" aria-label="Open menu" aria-controls="site-menu" aria-expanded="false">Menu <i></i></button></header><dialog class="mega-menu indri-menu" id="site-menu" aria-label="Main navigation"><div class="drawer-visual"><div class="menu-monogram" aria-hidden="true"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-mark.png" alt="" width="325" height="325" decoding="async"></div><div><span>NITIKSHAM / INDEPENDENT THINKING</span><h2>Thoughtful by design.</h2></div></div><div class="drawer-navigation"><button class="menu-close" aria-label="Close menu">×</button><span class="drawer-label">EXPLORE NITIKSHAM</span><div class="drawer-links"><a href="/">Home</a><details class="drawer-services"><summary>Our expertise <span>+</span></summary><div><a href="/services/">Explore all services</a><a href="/expertise/">Brand & design</a><a href="/expertise-web-development/">Website development</a><a href="/expertise-seo/">SEO</a><a href="/digital-marketing/">Digital marketing</a><a href="/copyright/">Copywriting & content</a><a href="/print/">Print & outdoor</a><a href="/social-media-marketing/">Social media</a></div></details><a href="/about-us/">Our story</a><a href="/team/">The collective</a><a href="/gallery/">Gallery & newsletters</a><a href="/software/">Software studio</a><a href="/login/">Studio login ↗</a><a href="/contact-us/">Contact</a></div><div class="drawer-contact"><span>LET’S CREATE SOMETHING.</span><a href="mailto:contact@nitiksham.com">contact@nitiksham.com</a><a href="tel:+917988567198">+91 79885 67198</a></div></div></dialog><div class="reading-progress" aria-hidden="true"></div><main id="main"><section class="page-head reveal" id="top"><span class="eyebrow">MEET NITIKSHAM</span><h1>A brand &amp; digital agency<br>in Karnal, Haryana.<br><em>Strategy at heart.<br>Creativity in motion.</em></h1><p>Nitiksham is a multidisciplinary marketing agency connecting brands with the people who matter to them — across India and worldwide. Strategy, design and digital under one roof, so every part of your brand works in the same direction.</p></section><section class="about-strip reveal"><div><span class="eyebrow">THE THINKING BEHIND THE NAME</span><h2>Niti. Strategy.<br>Ksham. Capability.</h2><p>Our name brings together strategic thinking and the ability to execute. <em>Niti</em> is the plan — understanding your market, your audience and what will move them. <em>Ksham</em> is the capability — the design, development and marketing craft that turns the plan into something people can see, use and remember. That’s how we approach every brief: understand the challenge, find the idea, and make it work across digital and traditional media.</p></div><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/about-us-hero.webp" alt="The Nitiksham studio in Karnal, Haryana — a strategy-led brand and digital agency" width="1200" height="800" decoding="async"></section><section class="section reveal">
+<div class="section-heading">
+<span class="eyebrow">WHO WE ARE</span>
+<h2>One team.<br>Many disciplines.</h2>
+<p>Graphic designers, brand thinkers, web developers, writers and marketers — working from our studio in Karnal, Haryana, with businesses across India and around the world.</p>
+</div>
+<div class="two-copy">
+<p>Nitiksham brings the disciplines of a full marketing agency together under one roof. Strategy shapes the idea, design gives it form, and digital and print carry it to the people it is meant for — so every part of your brand works in the same direction.</p>
+<p>What we do spans seven connected services: brand and graphic design, website development, search engine optimisation, digital marketing, copywriting and content, print and outdoor advertising, and social media management. Start with one, or bring them together into a single, connected plan.</p>
+</div>
+<p>See everything we offer on the <a class="text-link" href="/services/">services page →</a></p>
+</section>
+<section class="section"><div class="section-heading"><h2>Different skills.<br>Shared standards.</h2><p>Graphic designers, brand thinkers, web developers and marketers working towards a connected brand experience.</p></div><div class="values"><article><span>01</span><h3>Stay curious.</h3><p>Listen carefully. Ask better questions. Understand the business, the audience and the market before proposing the solution.</p></article><article><span>02</span><h3>Be honest.</h3><p>Keep communication clear, expectations realistic and decisions grounded in the needs of the project — not in jargon.</p></article><article><span>03</span><h3>Create together.</h3><p>Combine perspectives inside the studio and work closely with you throughout the process, so nothing is a surprise.</p></article><article><span>04</span><h3>Think beyond launch.</h3><p>Create a foundation your brand can build on, across channels and over time — work that keeps working after launch day.</p></article></div></section><section class="section reveal">
+<div class="section-heading">
+<span class="eyebrow">HOW WE WORK</span>
+<h2>Five stages.<br>One shared direction.</h2>
+<p>Every project follows the same clear process, shaped around your goals and your timeline.</p>
+</div>
+<div class="values">
+<article><span>01</span><h3>Discover</h3><p>We listen first: your business, your audience, your ambitions and what is getting in the way.</p></article>
+<article><span>02</span><h3>Plan</h3><p>We shape the strategy, scope and creative direction, with a clear route for the project.</p></article>
+<article><span>03</span><h3>Build</h3><p>We bring the ideas to life through design, content and development, with your feedback along the way.</p></article>
+<article><span>04</span><h3>Launch</h3><p>We prepare the details and put your new brand, website or campaign into the world.</p></article>
+<article><span>05</span><h3>Grow</h3><p>We review the response, learn from the results and plan the next step.</p></article>
+</div>
+</section>
+<section class="section reveal">
+<div class="section-heading">
+<span class="eyebrow">WHO WE WORK WITH</span>
+<h2>Six industries.<br>One clear process.</h2>
+</div>
+<div class="two-copy">
+<p>We work with real estate, e-commerce, healthcare, education, B2B and industrial, and FMCG and retail businesses. Each sector brings different audiences and different questions — and the same need for communication that is clear, honest and easy to remember.</p>
+<p>Whatever your industry, you work with the same team from the first conversation to launch and beyond. Our studio is in Karnal, Haryana, and our clients are across India and worldwide — distance has never been a barrier to a good working relationship.</p>
+</div>
+<figure class="image-wrap reveal"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/about-us-section.webp" alt="Nitiksham studio at work — designers and strategists shaping a brand" width="1200" height="800" decoding="async" loading="lazy"><figcaption class="caption">Designers and strategists shaping a brand together in the Karnal studio.</figcaption></figure>
+</section>
+<section class="section reveal" id="faq">
+<div class="section-heading">
+<span class="eyebrow">QUESTIONS, ANSWERED</span>
+<h2>About Nitiksham,<br>in plain words.</h2>
+</div>
+<div class="values">
+<article><span>01</span><h3>What does Nitiksham do?</h3><p>Nitiksham is a strategy-led brand, design and digital marketing agency in Karnal, Haryana. We offer seven connected services: brand and graphic design, website development, SEO, digital marketing, copywriting and content, print and outdoor advertising, and social media management.</p></article>
+<article><span>02</span><h3>Where is Nitiksham based?</h3><p>Our studio is in Karnal, Haryana, at Ground floor, Spartan Gym, Ramdev Colony, Sector 3 Part-2, Karnal 132001. We work with clients across India and worldwide.</p></article>
+<article><span>03</span><h3>What does the name Nitiksham mean?</h3><p>Nitiksham combines Niti, meaning strategy, and Ksham, meaning capability. It describes how we work: clear thinking, followed by the craft to make it real.</p></article>
+<article><span>04</span><h3>How does a project with Nitiksham work?</h3><p>Every project follows five stages: Discover, Plan, Build, Launch and Grow. We start by understanding your business and audience, agree a clear plan, build the work with your feedback, launch it carefully, and keep improving it afterwards.</p></article>
+<article><span>05</span><h3>How do I start a project with Nitiksham?</h3><p>Send an enquiry through our contact page, email contact@nitiksham.com or call +91 79885 67198. Tell us what you are building or changing, and we will take it from there.</p></article>
+</div>
+</section>
+<section class="new-cta"><span class="eyebrow">MEET YOUR CREATIVE PARTNER</span><h2>Different minds.<br><em>One shared ambition.</em></h2><p>Bring your perspective. We’ll bring the questions that take it further.</p><a class="button" href="/contact-us/">Start a conversation ↗</a></section></main><footer class="new-footer"><div class="footer-grid"><div><a class="wordmark brand-wordmark" href="/" aria-label="Nitiksham home"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/nitiksham-brand.png" alt="Nitiksham — an idea driven agency" loading="lazy" decoding="async" width="1240" height="308"></a><p>Strategy, creativity and digital.<br>Different skills. One clear direction.</p></div><div><h3>Explore</h3><a href="/about-us/">About</a><a href="/services/">Expertise</a><a href="/team/">The collective</a><a href="/gallery/">Gallery & newsletters</a></div><div><h3>Say hello</h3><a href="mailto:contact@nitiksham.com">contact@nitiksham.com</a><a href="tel:+917988567198">+91 79885 67198</a><p>Ground floor, Spartan Gym,<br>Ramdev Colony, Sector 3 Part-2,<br>Karnal, Haryana 132001, India</p></div></div><div class="foot-bottom"><span>© 2026 Nitiksham. All rights reserved.</span><a href="/privacy/">Privacy & enquiries</a><a href="#top">Back to top ↑</a></div></footer><button class="motion-toggle" aria-pressed="false">Pause motion</button><script>window.NITIKSHAM=<?php echo wp_json_encode(array(
     'apiBase' => untrailingslashit(rest_url('nitiksham/v1')),
     'fileEndpoint' => admin_url('admin-ajax.php'),
     'nonce' => (current_user_can('manage_options') ? wp_create_nonce('wp_rest') : ''),
 )); ?>;</script><script src="<?php echo esc_url(get_template_directory_uri() . '/assets/app.js'); ?>"></script><script src="<?php echo esc_url(get_template_directory_uri() . '/assets/motion.js'); ?>"></script><script src="<?php echo esc_url(get_template_directory_uri() . '/assets/cinematic.js'); ?>"></script><?php wp_footer(); ?></body></html>
+
