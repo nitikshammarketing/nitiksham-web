@@ -2,3 +2,19 @@
 @media(max-width:800px){.editorial-hero{height:auto;min-height:0;padding:120px 6% 45px;grid-template-columns:1fr;gap:35px}.hero-copy h1{font-size:53px}.hero-copy h1 br:nth-of-type(2){display:none}.hero-art{height:380px}.creative-grid{gap:30px;grid-template-columns:1fr}.card-scene{height:260px}.creative-card:nth-child(even){margin:0}.library-grid{grid-template-columns:1fr}.software-feature,.login-layout,.workspace-grid{grid-template-columns:1fr;gap:30px}.login-layout{padding:130px 6% 60px}.login-card{padding:28px}.dashboard{padding:120px 6% 50px}.dashboard h1{font-size:44px}.dashboard-heading{align-items:start;gap:10px}.dashboard-heading>a{font-size:11px;margin-top:40px}.page-head{padding:125px 6% 40px}.section{padding:45px 6%}.bubble b{font-size:55px}.number-bubbles{gap:0}.bubble{width:33%;min-height:100px;margin:0!important;padding:12px}.bubble span{font-size:9px}.hero-copy .eyebrow{font-size:8px}.software-art{padding:28px;min-height:330px}.service-type-art{min-height:300px}.new-cta{padding:60px 6%}.new-cta h2{font-size:43px}.inner-page .page-head{padding-top:45px}.inner-page .dashboard{padding-top:55px}.inner-page .login-layout{padding-top:50px}.inner-page .page-head h1{font-size:46px}}
 @media(prefers-reduced-motion:reduce){.hero-art img{animation:none}}
 .hero-copy{min-width:0}.hero-copy h1{max-width:none}.hero-copy .button:after{display:none}@media(max-width:800px){.hero-copy h1{font-size:46px;letter-spacing:-2px}.hero-copy h1 br:nth-of-type(2){display:block}.hero-copy{padding:0}.editorial-hero{padding-top:120px}.hero-art{object-position:center}}
+
+/* Nitiksham official identity — 2026-11-19. Uses the exact supplied logo artwork. */
+.site-header a.logo {display:flex;align-items:center;width:clamp(218px,22vw,285px);max-width:35vw;flex-shrink:0;line-height:1;}
+.site-header a.logo picture {display:block;width:100%;}
+.site-header a.logo img {display:block;width:100%;height:auto;max-height:76px;object-fit:contain;object-position:left center;}
+.drawer-visual > .menu-monogram {display:block;top:14%;left:30px;width:195px;height:195px;font-size:initial;line-height:normal;}
+.drawer-visual > .menu-monogram img {display:block;width:100%;height:100%;object-fit:contain;}
+.new-footer .wordmark.brand-wordmark {display:inline-block;width:min(100%,350px);max-width:100%;font-size:initial;letter-spacing:normal;font-weight:normal;line-height:1;background:#f6f4ee;padding:12px 14px;border-radius:2px;box-sizing:border-box;}
+.new-footer .wordmark.brand-wordmark img {width:100%;height:auto;display:block;object-fit:contain;}
+@media (max-width: 960px) {.site-header a.logo {width:215px;max-width:28vw;}}
+@media (max-width: 640px) {
+  .site-header a.logo {width:50px;min-width:50px;max-width:50px;}
+  .site-header a.logo img {width:50px;height:50px;max-height:50px;object-fit:contain;}
+  .drawer-visual > .menu-monogram {width:140px;height:140px;left:22px;top:12%;}
+  .new-footer .wordmark.brand-wordmark {width:min(100%,315px);padding:10px;}
+}
