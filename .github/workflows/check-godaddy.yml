@@ -1,0 +1,40 @@
+name: Check GoDaddy Connection (no changes)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Read-only GoDaddy preflight
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify required GitHub files
+        uses: actions/checkout@v4
+
+      - name: Verify source layout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f wordpress/wp-content/themes/nitiksham-original-v2/style.css
+          test -f wordpress/wp-content/plugins/nitiksham-studio/nitiksham-studio.php
+          echo "GitHub theme and plugin source files: OK"
+
+      - name: Check GoDaddy SSH access and target folders (read-only)
+        shell: bash
+        env:
+          GODADDY_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "$GODADDY_PRIVATE_KEY" ]; then
+            echo "::error::GitHub secret PRIVATE_KEY is missing."
+            exit 1
+          fi
+          keyfile="$RUNNER_TEMP/nitiksham_godaddy_key"
+          trap 'rm -f "$keyfile"' EXIT
+          umask 077
+          printf '%s\n' "$GODADDY_PRIVATE_KEY" > "$keyfile"
+          chmod 600 "$keyfile"
+          ssh -i "$keyfile" -o BatchMode=yes -o StrictHostKeyChecking=accept-new \
+            git_deployer_9936f3e02e_1322647@1322647.eu11.myftpupload.com \
+            'test -d /html/wp-content/themes/nitiksham-original-v2 && test -d /html/wp-content/plugins/nitiksham-studio && printf "GoDaddy SSH and both destination folders: OK\\n"'
+          echo "Read-only preflight successful. No files deployed."
