@@ -1,0 +1,10 @@
+private/config.php
+private/storage/*
+!private/storage/.gitignore
+node_modules/
+react-studio/node_modules/
+react-studio/dist/
+*.log
+.DS_Store
+.env
+*.sql.gz

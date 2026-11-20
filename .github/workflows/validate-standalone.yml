@@ -1,0 +1,30 @@
+name: Validate Nitiksham standalone site (no deployment)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'standalone/**'
+      - '.github/workflows/validate-standalone.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate standalone PHP, JavaScript and files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f standalone/public_html/index.html
+          test -f standalone/public_html/assets/nitiksham-brand.png
+          test -f standalone/public_html/api/index.php
+          test -f standalone/public_html/login/index.php
+          test -f standalone/public_html/studio/index.php
+          test -f standalone/public_html/backend-path.php
+          test -f standalone/public_html/.htaccess
+          test ! -f standalone/private/config.php
+          find standalone/public_html standalone/private standalone/tools -name '*.php' -print0 | xargs -0 -r -n1 php -l
+          find standalone/public_html -name '*.js' -print0 | xargs -0 -r -n1 node --check
+          echo 'Standalone build check passed. No deployment performed.'

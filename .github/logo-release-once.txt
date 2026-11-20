@@ -1,4 +1,0 @@
-Nitiksham official logo deployment — one-time release authorization.
-Scope: exactly the 28 allowlisted theme branding files; no plugin, database, or uploads.
-Preview workflow 44522276104 passed (PHP lint, SSH access, target folders writable, rsync dry-run).
-User requested deployment in this conversation on 2026-11-19.

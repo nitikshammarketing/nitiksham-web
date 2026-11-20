@@ -1,0 +1,1 @@
+React 19 Studio prototype for standalone PHP/MySQL backend. Not enabled in public_html; do not publish unprotected. Run npm install && npm run build when registry access is available. Studio owner checks must remain in PHP. React package build has not yet been verified.

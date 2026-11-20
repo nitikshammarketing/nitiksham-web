@@ -31,10 +31,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout cPanel source branch (not WordPress source)
+      - name: Checkout standalone cPanel source from main
         uses: actions/checkout@v4
         with:
-          ref: feature/cpanel-ftps-sync
+          ref: main
 
       - name: Validate public build before connection
         shell: bash
