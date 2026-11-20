@@ -22,12 +22,14 @@ try {
         if (!nsm_csrf_valid(is_string($_POST['csrf'] ?? null) ? $_POST['csrf'] : null)) nsm_error('Invalid login request.', 403);
         $email = strtolower(trim((string) ($_POST['email'] ?? '')));
         $password = (string) ($_POST['password'] ?? '');
-        $rateLimited = nsm_rate_limited((string) ($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+        $ip = (string) ($_SERVER['REMOTE_ADDR'] ?? 'unknown');
+        $rateLimited = nsm_rate_limited($ip);
         $cfg = nsm_config();
         $isValid = !$rateLimited && isset($cfg['admin_email'], $cfg['admin_password_hash']) &&
             hash_equals(strtolower(trim((string)$cfg['admin_email'])), $email) &&
             password_verify($password, (string)$cfg['admin_password_hash']);
         if (!$isValid) {
+            if (!$rateLimited) nsm_rate_limited($ip, true);
             if ($rateLimited) {http_response_code(429); header('Retry-After: 900'); echo 'Too many login attempts. Try again later.'; exit;}
             header('Location: /login/?error=1', true, 303);
             exit;
@@ -81,7 +83,7 @@ try {
         $title = nsm_limited_text($_POST['title'] ?? '', 121);
         $desc = nsm_limited_text($_POST['description'] ?? '', 1000);
         $kind = (string) ($_POST['kind'] ?? '');
-        if (!in_array($kind, ['design', 'newsletter'], true) || $title === '' || strlen($title) > 480) nsm_error('Enter a valid title and category.');
+        if (!in_array($kind, ['design', 'newsletter'], true) || $title === '' || (function_exists('mb_strlen') ? mb_strlen($title) : strlen($title)) > 120) nsm_error('Enter a valid title and category.');
         $entry = $_FILES['file'] ?? null;
         if (!$entry || is_array($entry['tmp_name'] ?? null) || ($entry['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) nsm_error('Choose an image or PDF file. Check PHP upload limits.');
         $max = min(15728640, (int)(nsm_config()['max_upload_bytes'] ?? 15728640));
