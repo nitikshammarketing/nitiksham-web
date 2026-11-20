@@ -1,9 +1,6 @@
 name: Verify GoDaddy cPanel full server name (read-only)
 
 on:
-  push:
-    paths:
-      - .github/workflows/verify-cpanel-server-ftp-host-once.yml
   workflow_dispatch:
 
 permissions:
