@@ -1,0 +1,39 @@
+name: Verify Nitiksham HTTP to HTTPS redirect
+
+on:
+  push:
+    paths:
+      - .github/workflows/check-main-domain-https.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check public HTTP redirect without following it
+        shell: bash
+        run: |
+          set -uo pipefail
+          url="http://nitiksham.com/"
+          headers="$RUNNER_TEMP/http-response.txt"
+          code="$(curl --http1.1 -sS -I --max-time 20 -o "$headers" -w '%{http_code}' "$url")" || { echo "::error::HTTP request failed"; exit 1; }
+          echo "HTTP status: $code"
+          tr -d '\r' < "$headers" | grep -iE '^(HTTP/|location:|server:)' || true
+          location="$(tr -d '\r' < "$headers" | awk 'tolower($1) == "location:" {print $2}' | tail -1)"
+          echo "Location: $location"
+          case "$code" in
+            301|302|307|308)
+              case "$location" in
+                https://nitiksham.com/*) echo "HTTP-to-HTTPS redirect is configured." ;;
+                *) echo "::error::HTTP redirect does not target https://nitiksham.com/"; exit 1 ;;
+              esac ;;
+            *) echo "::error::Main domain did not return an HTTP redirect."; exit 1 ;;
+          esac
+      - name: Check public HTTPS certificate and response
+        shell: bash
+        run: |
+          set -uo pipefail
+          curl --http1.1 -sS -I --max-time 20 https://nitiksham.com/ | head -20 || { echo "::error::HTTPS request failed"; exit 1; }
