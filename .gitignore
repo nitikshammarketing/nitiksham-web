@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.build/
+*.log
+.DS_Store
+# Local secrets / config (never committed)
+config.local.php
+.env
+.env.*
+# Uploaded gallery files live on the server only
+storage/*
+!storage/.gitkeep
