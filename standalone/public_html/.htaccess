@@ -6,6 +6,12 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 <IfModule mod_rewrite.c>
 RewriteEngine On
+
+# HTTP -> HTTPS only for the main domain. No impact on preview subdomain.
+RewriteCond %{HTTP_HOST} ^(www\.)?nitiksham\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://nitiksham.com%{REQUEST_URI} [R=302,L]
+
 RewriteRule ^api(?:/(.*))?$ api/index.php [L,QSA]
 </IfModule>
 <FilesMatch "^(?:\.env|composer\.json|composer\.lock|package\.json|package-lock\.json|README\.md)$">
