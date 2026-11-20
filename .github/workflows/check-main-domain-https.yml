@@ -1,9 +1,6 @@
 name: Verify Nitiksham HTTP to HTTPS redirect
 
 on:
-  push:
-    paths:
-      - .github/workflows/check-main-domain-https.yml
   workflow_dispatch:
 
 permissions:
