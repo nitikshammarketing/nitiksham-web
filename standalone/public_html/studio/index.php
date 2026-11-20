@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__DIR__, 2) . '/private/bootstrap.php';
+require_once dirname(__DIR__) . '/backend-path.php';
+require_once nsm_private_root() . '/bootstrap.php';
 nsm_require_owner();
 header('Cache-Control: no-store, private');
 header('X-Robots-Tag: noindex, nofollow');
