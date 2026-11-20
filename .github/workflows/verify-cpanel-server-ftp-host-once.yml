@@ -1,0 +1,46 @@
+name: Verify GoDaddy cPanel full server name (read-only)
+
+on:
+  push:
+    paths:
+      - .github/workflows/verify-cpanel-server-ftp-host-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check FTP FQDN resolves to our cPanel server IP
+        shell: bash
+        run: |
+          set -euo pipefail
+          host=sxb1plzcpnl508218.prod.sxb1.secureserver.net
+          ip=92.205.175.179
+          echo "Candidate hostname: $host"
+          getent ahostsv4 "$host" || { echo "::error::Server FQDN did not resolve."; exit 1; }
+          python3 - <<'PY'
+          import socket
+          host='sxb1plzcpnl508218.prod.sxb1.secureserver.net'
+          ip='92.205.175.179'
+          addresses={x[4][0] for x in socket.getaddrinfo(host,21,family=socket.AF_INET,type=socket.SOCK_STREAM)}
+          print("Addresses:", ", ".join(sorted(addresses)))
+          if ip not in addresses:
+              raise SystemExit(f"FQDN does not resolve to the cPanel shared IP {ip}")
+          print("FQDN matches cPanel IP")
+          PY
+      - name: Verify FTP STARTTLS certificate matches full hostname
+        shell: bash
+        run: |
+          set -euo pipefail
+          host=sxb1plzcpnl508218.prod.sxb1.secureserver.net
+          if ! timeout 25 openssl s_client -starttls ftp -connect "$host:21" -servername "$host" -verify_hostname "$host" -verify_return_error -brief < /dev/null > "$RUNNER_TEMP/ftps-cert.log" 2>&1; then
+            cat "$RUNNER_TEMP/ftps-cert.log"
+            echo "::error::FTPS TLS certificate verification failed"
+            exit 1
+          fi
+          cat "$RUNNER_TEMP/ftps-cert.log"
+          echo "FTPS hostname and certificate verified; no credentials or website files accessed."
