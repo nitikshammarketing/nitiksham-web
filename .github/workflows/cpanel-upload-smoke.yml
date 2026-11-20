@@ -1,0 +1,93 @@
+name: Verify cPanel FTPS upload and cleanup (manual only)
+
+# Tests one unique harmless text file in the dedicated FTP account's directory.
+# The site and WordPress/PHP/MySQL configuration are NOT deployed.
+on:
+  workflow_dispatch:
+    inputs:
+      live_confirmation:
+        description: "Type TEST_UPLOAD to authorize temporary file creation on the live domain folder"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nitiksham-cpanel-public-files
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Validate approval and FTPS settings
+        shell: bash
+        env:
+          LIVE_CONFIRMATION: ${{ inputs.live_confirmation }}
+          CPANEL_FTP_HOST: ${{ secrets.CPANEL_FTP_HOST }}
+          CPANEL_FTP_USER: ${{ secrets.CPANEL_FTP_USER }}
+          CPANEL_FTP_PASSWORD: ${{ secrets.CPANEL_FTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test "$LIVE_CONFIRMATION" = "TEST_UPLOAD" || { echo "::error::Enter TEST_UPLOAD to authorize harmless temporary file creation."; exit 1; }
+          test "$CPANEL_FTP_HOST" = "sxb1plzcpnl508218.prod.sxb1.secureserver.net" || { echo "::error::FTP host mismatch."; exit 1; }
+          test "$CPANEL_FTP_USER" = "nitikshamdeploy@y2g.fec.mytemp.website" || { echo "::error::FTP user mismatch."; exit 1; }
+          test -n "$CPANEL_FTP_PASSWORD" || { echo "::error::FTP password missing."; exit 1; }
+
+      - name: Check FTP root matches Nitiksham public website (read-only)
+        shell: bash
+        env:
+          CPANEL_FTP_HOST: ${{ secrets.CPANEL_FTP_HOST }}
+          CPANEL_FTP_USER: ${{ secrets.CPANEL_FTP_USER }}
+          CPANEL_FTP_PASSWORD: ${{ secrets.CPANEL_FTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --ssl-reqd --ftp-pasv \
+            --connect-timeout 12 --max-time 45 \
+            --user "$CPANEL_FTP_USER:$CPANEL_FTP_PASSWORD" \
+            --list-only "ftp://$CPANEL_FTP_HOST/" \
+            --output "$RUNNER_TEMP/nsm-root-list.txt"
+          if ! grep -Fxq 'index.html' "$RUNNER_TEMP/nsm-root-list.txt"; then
+            echo "::error::FTP account does not start in the Nitiksham document root (index.html missing). No files written."
+            exit 1
+          fi
+          echo "Verified: FTP account starts at a public website root containing index.html."
+
+      - name: Upload, download and remove one unique test file (no website changes)
+        shell: bash
+        env:
+          CPANEL_FTP_HOST: ${{ secrets.CPANEL_FTP_HOST }}
+          CPANEL_FTP_USER: ${{ secrets.CPANEL_FTP_USER }}
+          CPANEL_FTP_PASSWORD: ${{ secrets.CPANEL_FTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          remote="__nitiksham-ftps-smoke-${GITHUB_RUN_ID}.txt"
+          original="$RUNNER_TEMP/$remote"
+          fetched="$RUNNER_TEMP/fetched-$remote"
+          printf 'Nitiksham FTPS write test run %s\n' "$GITHUB_RUN_ID" > "$original"
+
+          cleanup() {
+            curl --fail --silent --show-error --ssl-reqd --ftp-pasv \
+              --connect-timeout 12 --max-time 45 \
+              --user "$CPANEL_FTP_USER:$CPANEL_FTP_PASSWORD" \
+              --quote "DELE $remote" \
+              --list-only "ftp://$CPANEL_FTP_HOST/" --output /dev/null \
+              && echo "Test file deleted." \
+              || echo "::warning::Could not confirm test-file deletion. Remove $remote via cPanel File Manager."
+          }
+          trap cleanup EXIT
+
+          curl --fail --silent --show-error --ssl-reqd --ftp-pasv \
+            --connect-timeout 12 --max-time 45 \
+            --user "$CPANEL_FTP_USER:$CPANEL_FTP_PASSWORD" \
+            --upload-file "$original" "ftp://$CPANEL_FTP_HOST/$remote"
+          echo "Temporary test file uploaded."
+
+          curl --fail --silent --show-error --ssl-reqd --ftp-pasv \
+            --connect-timeout 12 --max-time 45 \
+            --user "$CPANEL_FTP_USER:$CPANEL_FTP_PASSWORD" \
+            "ftp://$CPANEL_FTP_HOST/$remote" --output "$fetched"
+          cmp "$original" "$fetched" || { echo "::error::Uploaded file content did not match."; exit 1; }
+          echo "Encrypted FTPS upload/readback succeeded."
