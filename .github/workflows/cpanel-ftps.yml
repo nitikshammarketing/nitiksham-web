@@ -80,9 +80,11 @@ jobs:
           test -n "$CPANEL_FTP_USER" || { echo "::error::Missing CPANEL_FTP_USER secret"; exit 1; }
           test -n "$CPANEL_FTP_PASSWORD" || { echo "::error::Missing CPANEL_FTP_PASSWORD secret"; exit 1; }
 
-          # Compare against values displayed in the user's cPanel FTP Configuration.
-          if [ "$CPANEL_FTP_HOST" != "ftp.y2g.fec.mytemp.website" ]; then
-            echo "::error::CPANEL_FTP_HOST is not the exact hostname from cPanel. Save only ftp.y2g.fec.mytemp.website (no ftp:// or :21)."
+          # GoDaddy's FTPS certificate was verified by a read-only probe.
+          # The account's FTP alias is not covered by the certificate.
+          # A valid server hostname has exactly one leftmost label under the wildcard.
+          if [[ ! "$CPANEL_FTP_HOST" =~ ^[a-zA-Z0-9-]+\.prod\.sxb1\.secureserver\.net$ ]]; then
+            echo "::error::Set CPANEL_FTP_HOST to the exact server hostname from cPanel > Server Information. The FTP alias ftp.y2g.fec.mytemp.website fails TLS hostname verification; the presented certificate covers *.prod.sxb1.secureserver.net."
             exit 1
           fi
           if [ "$CPANEL_FTP_USER" != "nitikshamdeploy@y2g.fec.mytemp.website" ]; then
