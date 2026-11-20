@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
-require_once dirname(__DIR__, 2) . '/private/bootstrap.php';
-require_once dirname(__DIR__, 2) . '/private/data.php';
+require_once dirname(__DIR__) . '/backend-path.php';
+require_once nsm_private_root() . '/bootstrap.php';
+require_once nsm_private_root() . '/data.php';
 
 nsm_session_start();
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/api', PHP_URL_PATH) ?: '/api';
@@ -61,7 +62,7 @@ try {
         $safeMimes = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'application/pdf' => 'pdf'];
         $mime = (string) $row['mime'];
         if (!isset($safeMimes[$mime])) nsm_error('Not found.', 404);
-        $storage = dirname(__DIR__, 2) . '/private/storage/files';
+        $storage = nsm_private_root() . '/storage/files';
         $file = $storage . '/' . $row['file_name'];
         if (!is_file($file) || basename($file) !== $row['file_name']) nsm_error('Not found.', 404);
         header('Content-Type: ' . $mime);
@@ -97,7 +98,7 @@ try {
         if ($mime !== 'application/pdf' && @getimagesize($temp) === false) nsm_error('Invalid image file.');
         if ($mime === 'application/pdf' && file_get_contents($temp, false, null, 0, 5) !== '%PDF-') nsm_error('Invalid PDF file.');
         $id = nsm_generate_id();
-        $dir = dirname(__DIR__, 2) . '/private/storage/files';
+        $dir = nsm_private_root() . '/storage/files';
         if (!is_dir($dir) && !mkdir($dir, 0700, true) && !is_dir($dir)) nsm_error('Cannot store uploads.', 500);
         $filename = $id . '.' . $allowed[$mime];
         $destination = $dir . '/' . $filename;
