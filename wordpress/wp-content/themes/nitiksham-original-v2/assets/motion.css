@@ -4,3 +4,51 @@
 @media(max-width:700px){.site-header{height:78px;padding:0 5%}.site-header .logo{width:120px}.strategy-button{font-size:9px;padding:11px 10px;gap:7px;left:54%}.menu-toggle{font-size:12px;gap:10px}.menu-toggle i{width:17px}.menu-toggle i:before{width:21px}.menu-toggle i:after{width:11px}.hero-scroll{height:145svh}.hero-stage{height:100svh;min-height:660px}.hero-light,.hero-dark{padding:0 6%}.hero-v2-content{grid-template-columns:1fr;gap:35px;padding-top:40px}.hero-v2-title h1{font-size:clamp(42px,11vw,70px);line-height:1.08;letter-spacing:-.055em;margin-bottom:21px}.hero-v2-title .eyebrow{font-size:8px;letter-spacing:1px;margin-bottom:22px}.hero-v2-title>p{font-size:12px;max-width:280px}.hero-v2-description{max-width:440px}.hero-index{font-size:8px;margin-bottom:12px}.hero-v2-description p{font-size:12px;line-height:1.8}.circled:after{inset:-3px -9px -4px -5px;border-width:1.5px}.hero-bottom{bottom:22px;left:6%;right:6%;align-items:center}.hero-bottom>span{font-size:7px;letter-spacing:.4px}.hero-bottom>span:first-child{display:none}.discover{font-size:12px;padding:14px 18px;gap:15px}.floating-star{width:42px;height:42px;top:15%;right:9%}.creative-section{padding:70px 7% 45px}.creative-intro{margin-bottom:55px}.creative-intro h2{font-size:32px}.creative-intro .eyebrow{font-size:8px;line-height:1.6}.creative-intro p{font-size:13px}.creative-grid{grid-template-columns:1fr;gap:40px;padding-right:0}.creative-card:nth-child(even){margin-top:0}.card-scene{height:325px}.float-design{padding:20px;max-width:215px}.float-design>b{font-size:39px}.search-design>b{font-size:28px}.card-caption h3{font-size:20px}.concept-note{font-size:9px;margin-top:50px}.service-v2{padding:60px 6%}.service-v2-heading h2{font-size:37px}.service-v2-row{grid-template-columns:1fr 30px;gap:13px;padding:25px 0}.service-v2-row h3{font-size:23px;grid-column:1;grid-row:1}.service-v2-row p{font-size:12px;grid-column:1;grid-row:2}.service-number{font-size:10px;grid-column:2;grid-row:1}.service-direction{grid-column:2;grid-row:2;font-size:22px}.marquee{padding:20px 0}.marquee span{font-size:22px}.marquee-track{gap:28px;padding-right:28px}.approach-v2{padding:70px 6%}.approach-title h2{font-size:37px}.approach-title p{font-size:13px}.number-bubbles{margin:45px 0 60px;flex-wrap:wrap;gap:8px}.bubble{width:46%;margin:0;border-radius:45px;min-height:150px}.bubble:nth-child(2){margin-top:45px}.bubble:last-child{margin-top:-5px}.bubble b{font-size:64px;letter-spacing:-3px}.bubble span{font-size:9px;max-width:130px;text-align:center}.process-tabs summary{font-size:22px;padding:20px 0}.process-tabs details p{font-size:13px}.new-cta{padding:65px 6%}.new-cta h2{font-size:58px}.cta-bottom{display:block}.cta-bottom p{font-size:12px}.pill-button{margin-top:25px;padding:17px 21px;font-size:12px}.new-footer{padding:50px 6% 25px}.footer-grid{grid-template-columns:1fr 1fr;gap:35px;margin-bottom:40px}.footer-grid>div:first-child{grid-column:1/-1}.footer-grid h3{font-size:14px}.footer-grid p,.footer-grid a:not(.wordmark){font-size:11px;overflow-wrap:anywhere}.foot-bottom{font-size:9px;line-height:1.6}.motion-toggle{bottom:10px;left:10px;font-size:8px}.menu-inner{display:block;padding:90px 7% 40px}.menu-links>a{font-size:36px;padding:14px 0;gap:18px;letter-spacing:-1.5px}.menu-links small{font-size:10px}.menu-links>a>span{font-size:20px}.menu-aside{margin-top:40px}.menu-aside b{font-size:13px;margin-bottom:22px}.menu-aside a{font-size:12px}.inner-page main{padding-top:78px}.inner-page .page-head{padding:55px 6%}.inner-page .page-head h1{font-size:44px;letter-spacing:-2.4px}.inner-page .page-head p{font-size:14px}.inner-page .section{padding:55px 6%}.inner-page .service-row h3{font-size:22px}.inner-page .service-row{padding:23px 0}.inner-page .service-detail{gap:35px}.inner-page .detail-img{height:290px}.inner-page .about-strip>img{height:350px}.inner-page .about-strip>div{padding:45px 6%}.inner-page form{padding:25px}.inner-page form h2{font-size:24px}.inner-page .contact h1{font-size:58px}.collective-grid{grid-template-columns:1fr;gap:20px}.collective-grid article{padding:30px}.collective-grid h3{margin-top:50px;font-size:32px}}
 @media(prefers-reduced-motion:reduce){.hero-scroll{height:100svh}.hero-dark{display:none}.floating-star,.marquee-track{animation:none}.motion-ready .reveal{opacity:1;transform:none;transition:none}.mega-menu[open]{animation:none}}
 .hero-dark .hero-bottom{visibility:hidden}
+
+/* === R3 motion additions (Agent B, 2026-11-20) — appended; existing rules above untouched === */
+/* 1. Choreographed hero entrance: home .editorial-hero + inner .page-head.
+   Gated on .motion-ready so content stays fully visible if JS fails; keyframes
+   end at opacity:1/translateY(0) so the fixed-height 100svh hero never overflows. */
+@keyframes hero-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hero-art-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes menu-link-in{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:translateX(0)}}
+@keyframes menu-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes drawer-out{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(56px)}}
+@keyframes menu-backdrop-out{from{opacity:1}to{opacity:0}}
+.motion-ready .editorial-hero .hero-copy>*{animation:hero-in .85s cubic-bezier(.16,1,.3,1) both}
+.motion-ready .editorial-hero .hero-copy>:nth-child(1){animation-delay:.05s}
+.motion-ready .editorial-hero .hero-copy>:nth-child(2){animation-delay:.16s}
+.motion-ready .editorial-hero .hero-copy>:nth-child(3){animation-delay:.28s}
+.motion-ready .editorial-hero .hero-copy>:nth-child(4){animation-delay:.40s}
+.motion-ready .editorial-hero .hero-copy>:nth-child(5){animation-delay:.48s}
+.motion-ready .editorial-hero .hero-art{animation:hero-art-in 1s cubic-bezier(.16,1,.3,1) .35s both}
+.motion-ready .page-head.in-view>*{animation:hero-in .7s cubic-bezier(.16,1,.3,1) both}
+.motion-ready .page-head.in-view>:nth-child(1){animation-delay:.05s}
+.motion-ready .page-head.in-view>:nth-child(2){animation-delay:.16s}
+.motion-ready .page-head.in-view>:nth-child(3){animation-delay:.27s}
+/* 2. Image clip reveal on scroll (JS adds .clip-reveal and observes with the reveal IO). */
+.motion-ready .clip-reveal{clip-path:inset(0 0 100% 0);transition:clip-path 1s cubic-bezier(.16,1,.3,1)}
+.motion-ready .clip-reveal.in-view{clip-path:inset(0 0 0 0)}
+/* 6. Full-screen menu: staggered link entrance + animated close (.menu-closing set by motion.js). */
+#site-menu[open] .drawer-links>*{animation:menu-link-in .5s cubic-bezier(.22,1,.36,1) both}
+#site-menu[open] .drawer-links>:nth-child(1){animation-delay:.12s}
+#site-menu[open] .drawer-links>:nth-child(2){animation-delay:.17s}
+#site-menu[open] .drawer-links>:nth-child(3){animation-delay:.22s}
+#site-menu[open] .drawer-links>:nth-child(4){animation-delay:.27s}
+#site-menu[open] .drawer-links>:nth-child(5){animation-delay:.32s}
+#site-menu[open] .drawer-links>:nth-child(6){animation-delay:.37s}
+#site-menu[open] .drawer-links>:nth-child(7){animation-delay:.42s}
+#site-menu[open] .drawer-links>:nth-child(8){animation-delay:.47s}
+#site-menu[open] .drawer-label{animation:menu-fade-in .5s .08s both}
+#site-menu[open] .drawer-contact{animation:menu-fade-in .5s .5s both}
+#site-menu[open] .drawer-visual>div{animation:menu-link-in .6s .15s both}
+#site-menu.menu-closing{animation:drawer-out .28s cubic-bezier(.5,0,.75,0) both}
+#site-menu.menu-closing::backdrop{animation:menu-backdrop-out .28s ease-in both}
+/* 8. Pause motion + reduced motion: everything added above shows instantly, no frozen mid-state. */
+.motion-paused #site-menu[open]{animation:none}
+.motion-paused .editorial-hero .hero-copy>*,.motion-paused .editorial-hero .hero-art,.motion-paused .page-head.in-view>*,.motion-paused #site-menu[open] .drawer-links>*,.motion-paused #site-menu[open] .drawer-label,.motion-paused #site-menu[open] .drawer-contact,.motion-paused #site-menu[open] .drawer-visual>div,.motion-paused #site-menu.menu-closing,.motion-paused #site-menu.menu-closing::backdrop{animation:none!important;opacity:1!important;transform:none!important}
+.motion-paused .clip-reveal{clip-path:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){
+.motion-ready .editorial-hero .hero-copy>*,.motion-ready .editorial-hero .hero-art,.motion-ready .page-head.in-view>*,#site-menu[open] .drawer-links>*,#site-menu[open] .drawer-label,#site-menu[open] .drawer-contact,#site-menu[open] .drawer-visual>div,#site-menu.menu-closing,#site-menu.menu-closing::backdrop{animation:none!important;opacity:1!important;transform:none!important}
+.motion-ready .clip-reveal{clip-path:none!important;transition:none!important}
+}
