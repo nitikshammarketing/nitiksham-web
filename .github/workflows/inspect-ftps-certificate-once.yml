@@ -1,0 +1,27 @@
+name: Inspect cPanel FTPS certificate (read-only)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/inspect-ftps-certificate-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Inspect presented FTP TLS certificate without credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          host="ftp.y2g.fec.mytemp.website"
+          echo "Inspecting the certificate offered by the configured FTP server over STARTTLS on port 21"
+          echo "No login, upload, password or account secret is used."
+          timeout 25 openssl s_client -starttls ftp -connect "$host:21" -servername "$host" -showcerts < /dev/null 2>"$RUNNER_TEMP/tls-errors" |
+          openssl x509 -noout -subject -issuer -dates -ext subjectAltName
+          echo "Certificate inspection complete. No website files changed."
