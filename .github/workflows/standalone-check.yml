@@ -1,0 +1,18 @@
+name: Check standalone cPanel rebuild (no deployment)
+on:
+  push:
+    branches:
+      - feature/standalone-cpanel-v1
+    paths:
+      - 'standalone/**'
+      - '.github/workflows/standalone-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PHP, JS, routes and assets
+        run: python3 standalone/tools/smoke_test.py
