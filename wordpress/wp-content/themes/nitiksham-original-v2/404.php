@@ -1,2 +1,0 @@
-<?php if ( ! defined('ABSPATH') ) exit; status_header(404); ?>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found | Nitiksham</title><?php wp_head(); ?></head><body><?php wp_body_open(); ?><main style="margin:15vh auto;max-width:600px;font:18px sans-serif;padding:30px"><h1>Page not found</h1><p>The page you requested does not exist.</p><p><a href="<?php echo esc_url(home_url('/')); ?>">Return home</a></p></main><?php wp_footer(); ?></body></html>
