@@ -1,0 +1,58 @@
+# Nitiksham — Apache config for GoDaddy Deluxe cPanel (public_html/.htaccess)
+# Static pre-rendered pages + PHP API. No Node at runtime.
+
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# --- Canonical host: https + non-www ---
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.nitiksham\.com$ [NC]
+RewriteRule ^(.*)$ https://nitiksham.com/$1 [R=301,L]
+
+# --- Legacy WordPress redirects (old URLs keep working) ---
+RewriteRule ^wp-json/nitiksham/v1/(.*)$ /api/$1 [R=301,L]
+RewriteRule ^(sample-page|hello-world)/?$ / [R=301,L]
+RewriteRule ^(wp-admin|wp-login\.php)(/.*)?$ /login/ [R=301,L]
+
+# --- Pretty API URLs -> PHP endpoints ---
+# (The frontend also calls the .php URLs directly; both work.)
+RewriteRule ^api/session$ /api/session.php [L]
+RewriteRule ^api/login$ /api/login.php [L]
+RewriteRule ^api/logout$ /api/logout.php [L]
+RewriteRule ^api/gallery$ /api/gallery.php [L]
+RewriteRule ^api/software$ /api/software.php [L]
+RewriteRule ^api/file$ /api/file.php [L]
+RewriteRule ^api/contact$ /api/contact.php [L]
+RewriteRule ^api/manage/items$ /api/manage/items.php [L]
+RewriteRule ^api/manage/upload$ /api/manage/upload.php [L]
+RewriteRule ^api/manage/software$ /api/manage/software.php [L]
+RewriteRule ^api/manage/enquiries$ /api/manage/enquiries.php [L]
+RewriteRule ^api/manage/items/([A-Za-z0-9-]+)$ /api/manage/item.php?id=$1 [L,QSA]
+</IfModule>
+
+# --- Never serve the schema or local config over HTTP ---
+<FilesMatch "^(schema\.sql|config\.local\.php)$">
+  Require all denied
+</FilesMatch>
+
+# --- Security headers (no global CSP: the site uses inline scripts) ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# --- Cache static assets (HTML stays fresh so deploys show at once) ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+</IfModule>
