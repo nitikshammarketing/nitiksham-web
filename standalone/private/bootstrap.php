@@ -94,7 +94,7 @@ function nsm_require_csrf(): void {
     }
 }
 
-function nsm_rate_limited(string $ip): bool {
+function nsm_rate_limited(string $ip, bool $recordFailure = false): bool {
     // File-based cross-session login throttle. Directory is outside web root.
     $dir = __DIR__ . '/storage/rate-limits';
     if (!is_dir($dir) && !mkdir($dir, 0700, true) && !is_dir($dir)) return true;
@@ -105,12 +105,12 @@ function nsm_rate_limited(string $ip): bool {
     $state = json_decode($raw ?: '', true);
     $state = is_array($state) ? $state : ['count' => 0, 'since' => time()];
     if (time() - (int) $state['since'] >= 900) $state = ['count' => 0, 'since' => time()];
-    $state['count']++;
+    if ($recordFailure) $state['count']++;
     rewind($fp);
     ftruncate($fp, 0);
     fwrite($fp, json_encode($state));
     fflush($fp);
     flock($fp, LOCK_UN);
     fclose($fp);
-    return $state['count'] > 8;
+    return $state['count'] >= 8;
 }
