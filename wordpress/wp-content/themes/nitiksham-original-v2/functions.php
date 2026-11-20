@@ -42,16 +42,15 @@ function nko_llms_txt() {
   return <<<'LLMS'
 # Nitiksham
 
-> Nitiksham is a strategy-led brand, design and digital marketing agency based in Karnal, Haryana, India.
+> Nitiksham is a strategy-led brand, design and digital marketing agency working across India and worldwide.
 
 ## About
 
 - Name: Nitiksham. "Niti" means strategy and "Ksham" means capability.
-- Location: Karnal, Haryana, India.
-- Address: Ground floor, Spartan Gym, Ramdev Colony, Sector 3 Part-2, Karnal, Haryana 132001, India.
+- Location: India — working worldwide.
+- Address: Karnal, Haryana – 132001, India.
 - Website: https://nitiksham.com/
 - Email: contact@nitiksham.com
-- Phone: +91 79885 67198
 - Service area: India and worldwide.
 
 ## Services
