@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__DIR__, 2) . '/private/bootstrap.php';
+require_once dirname(__DIR__) . '/backend-path.php';
+require_once nsm_private_root() . '/bootstrap.php';
 nsm_session_start();
 if (nsm_is_owner()) {header('Location: /studio/', true, 302);exit;}
 header('Cache-Control: no-store');
