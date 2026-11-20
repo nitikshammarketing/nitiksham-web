@@ -1,0 +1,28 @@
+name: Validate standalone Nitiksham (no deploy)
+on:
+  push:
+    paths:
+      - 'standalone/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP syntax and static routes
+        run: |
+          set -eu
+          find standalone/public_html standalone/private standalone/tools -name '*.php' -print0 | xargs -0 -n1 php -l
+          test -f standalone/public_html/index.html
+          test -f standalone/public_html/gallery/index.html
+          test -f standalone/public_html/assets/nitiksham-brand.png
+          test -f standalone/public_html/api/index.php
+          test ! -e standalone/private/config.php
+      - name: Validate browser JavaScript
+        run: |
+          set -eu
+          for file in standalone/public_html/*.js; do node --check "$file"; done
