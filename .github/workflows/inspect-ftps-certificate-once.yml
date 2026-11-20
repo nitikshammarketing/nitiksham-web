@@ -1,10 +1,6 @@
 name: Inspect cPanel FTPS certificate (read-only)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/inspect-ftps-certificate-once.yml
   workflow_dispatch:
 
 permissions:
