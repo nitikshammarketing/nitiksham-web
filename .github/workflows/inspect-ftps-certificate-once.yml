@@ -24,4 +24,20 @@ jobs:
           echo "No login, upload, password or account secret is used."
           timeout 25 openssl s_client -starttls ftp -connect "$host:21" -servername "$host" -showcerts < /dev/null 2>"$RUNNER_TEMP/tls-errors" |
           openssl x509 -noout -subject -issuer -dates -ext subjectAltName
+          echo "DNS and reverse DNS check for configured FTP hostname:"
+          python3 - <<'PY'
+          import socket
+          name = 'ftp.y2g.fec.mytemp.website'
+          addresses = sorted({item[4][0] for item in socket.getaddrinfo(name,21,family=socket.AF_INET,type=socket.SOCK_STREAM)})
+          for addr in addresses:
+              print(f'FTP A record: {addr}')
+              try:
+                  ptr_name = socket.gethostbyaddr(addr)[0]
+                  print(f'PTR hostname: {ptr_name}')
+                  if ptr_name.endswith('.prod.sxb1.secureserver.net'):
+                      ipset = {t[4][0] for t in socket.getaddrinfo(ptr_name,21,family=socket.AF_INET,type=socket.SOCK_STREAM)}
+                      print(f'PTR is certificate-compatible and forward resolves: {addr in ipset}')
+              except (OSError,socket.herror) as exc:
+                  print(f'No PTR available for {addr}: {type(exc).__name__}')
+          PY
           echo "Certificate inspection complete. No website files changed."
