@@ -2,10 +2,10 @@
 """Verify the built site in dist/ (run after `npm run build`).
 
 Checks:
-- all 17 public pages + login + studio + 404 exist
+- all 18 public pages + login + studio + 404 exist
 - every public page has title / description / canonical / OG / Twitter / JSON-LD
 - login, studio and 404 carry noindex
-- sitemap.xml lists the 17 public paths
+- sitemap.xml lists the 18 public paths
 - robots.txt disallows /studio/ /login/ /api/
 - no forbidden strings (phone number / street address) anywhere in dist/ or src/
 - every internal link and image in dist/ resolves to a file in dist/
@@ -28,7 +28,7 @@ PUBLIC_PATHS = [
     "/", "/about-us/", "/services/", "/expertise/",
     "/expertise-web-development/", "/expertise-seo/", "/digital-marketing/",
     "/social-media-marketing/", "/copyright/", "/print/", "/software/",
-    "/nitik-hr-management/", "/nitik-stock-desk/",
+    "/nitik-softwares/", "/nitik-hr-management/", "/nitik-stock-desk/",
     "/team/", "/gallery/", "/contact-us/", "/privacy/",
 ]
 PRIVATE_PATHS = ["/login/", "/studio/"]
@@ -85,7 +85,7 @@ def main():
     for p in PUBLIC_PATHS:
         check(f"<loc>https://nitiksham.com{p}</loc>" in sitemap,
               f"sitemap lists {p}")
-    check(len(re.findall(r"<url>", sitemap)) == 17, "sitemap has exactly 17 urls")
+    check(len(re.findall(r"<url>", sitemap)) == 18, "sitemap has exactly 18 urls")
     robots = (DIST / "robots.txt").read_text()
     for d in ("/studio/", "/login/", "/api/"):
         check(f"Disallow: {d}" in robots, f"robots disallows {d}")

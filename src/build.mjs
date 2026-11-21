@@ -2,7 +2,7 @@
 // and assemble dist/ — the exact content of public_html on the cPanel server.
 //
 //   dist/
-//     index.html, <slug>/index.html   (17 public pages + login + studio)
+//     index.html, <slug>/index.html   (18 public pages + login + studio)
 //     404.html, sitemap.xml, robots.txt, llms.txt, .htaccess
 //     assets/                         (css, js, img, brand files)
 //     api/                            (PHP endpoints + schema.sql)

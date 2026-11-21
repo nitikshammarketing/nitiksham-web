@@ -11,6 +11,7 @@ import SocialMediaMarketingPage from './pages/social-media-marketing.jsx';
 import CopyrightPage from './pages/copyright.jsx';
 import PrintPage from './pages/print.jsx';
 import SoftwarePage from './pages/software.jsx';
+import NitikSoftwaresPage from './pages/nitik-softwares.jsx';
 import NitikHrManagementPage from './pages/nitik-hr-management.jsx';
 import NitikStockDeskPage from './pages/nitik-stock-desk.jsx';
 import TeamPage from './pages/team.jsx';
@@ -32,6 +33,7 @@ import { meta as socialMediaMarketingMeta } from './pages/social-media-marketing
 import { meta as copyrightMeta } from './pages/copyright.jsx';
 import { meta as printMeta } from './pages/print.jsx';
 import { meta as softwareMeta } from './pages/software.jsx';
+import { meta as nitikSoftwaresMeta } from './pages/nitik-softwares.jsx';
 import { meta as nitikHrManagementMeta } from './pages/nitik-hr-management.jsx';
 import { meta as nitikStockDeskMeta } from './pages/nitik-stock-desk.jsx';
 import { meta as teamMeta } from './pages/team.jsx';
@@ -54,6 +56,7 @@ export const pages = [
   { meta: copyrightMeta, Component: CopyrightPage },
   { meta: printMeta, Component: PrintPage },
   { meta: softwareMeta, Component: SoftwarePage },
+  { meta: nitikSoftwaresMeta, Component: NitikSoftwaresPage },
   { meta: nitikHrManagementMeta, Component: NitikHrManagementPage },
   { meta: nitikStockDeskMeta, Component: NitikStockDeskPage },
   { meta: teamMeta, Component: TeamPage },

@@ -7,8 +7,8 @@ export const SITE_NAME = 'Nitiksham';
 export const CONTACT_EMAIL = 'contact@nitiksham.com';
 export const ADDRESS_LINE = 'Karnal, Haryana – 132001, India';
 
-// Public pages in the sitemap (the 15 WordPress routes + 2 software
-// product intro pages).
+// Public pages in the sitemap (the 15 WordPress routes + software hub
+// + 2 software product intro pages).
 export const SITEMAP_PATHS = [
   '/',
   '/about-us/',
@@ -21,6 +21,7 @@ export const SITEMAP_PATHS = [
   '/copyright/',
   '/print/',
   '/software/',
+  '/nitik-softwares/',
   '/nitik-hr-management/',
   '/nitik-stock-desk/',
   '/team/',
@@ -166,6 +167,7 @@ export const LLMS_TXT = `# Nitiksham
 - Copywriting & Content Writing: https://nitiksham.com/copyright/
 - Print Design & Outdoor Advertising: https://nitiksham.com/print/
 - Custom Software Development: https://nitiksham.com/software/
+- Nitik Softwares (client login): https://nitiksham.com/nitik-softwares/
 - Nitik HR Management: https://nitiksham.com/nitik-hr-management/
 - Nitik Stock-Desk: https://nitiksham.com/nitik-stock-desk/
 - Team: https://nitiksham.com/team/
