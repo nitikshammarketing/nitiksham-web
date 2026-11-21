@@ -37,10 +37,9 @@ export const SITEMAP_PATHS = [
 // in the header, the products section on /software/, and the footer links —
 // add a product here and it appears in all three. Each product also needs
 // an intro page in src/pages/<slug>.jsx and a sitemap entry above.
-// appUrl/demoUrl/loginUrl are the live production apps (Stock-Desk on its
-// GoDaddy domain stock.nitiksham.com; HR still on Render until
-// hrm.nitiksham.com goes live); no demo credentials are published
-// anywhere on this site.
+// appUrl/demoUrl/loginUrl are the live production apps on their GoDaddy
+// domains (stock.nitiksham.com, hrm.nitiksham.com); no demo credentials
+// are published anywhere on this site.
 export const SOFTWARE_PRODUCTS = [
   {
     name: 'Nitik HR Management',
@@ -49,10 +48,10 @@ export const SOFTWARE_PRODUCTS = [
     tagline: 'HR and recruitment, in one workspace.',
     description:
       'A multi-company HR and recruitment workspace — candidates, jobs, interviews and documents in one place.',
-    appUrl: 'https://nitik-hr-management-6tpr.onrender.com',
-    demoUrl: 'https://nitik-hr-management-6tpr.onrender.com',
+    appUrl: 'https://hrm.nitiksham.com',
+    demoUrl: 'https://hrm.nitiksham.com',
     demoNote: 'Demo access is arranged on request — talk to us.',
-    loginUrl: 'https://nitik-hr-management-6tpr.onrender.com',
+    loginUrl: 'https://hrm.nitiksham.com',
     features: [
       {
         title: 'Candidate invites',
