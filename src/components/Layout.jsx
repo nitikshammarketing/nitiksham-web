@@ -1,6 +1,7 @@
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Seo from './Seo.jsx';
+import { GA_MEASUREMENT_ID } from '../site.config.js';
 
 // Full HTML document shell: shared header (logo, mega-menu, reading progress),
 // <main>, shared footer, and the theme JS. Per-page extra scripts (library.js,
@@ -21,6 +22,13 @@ export default function Layout({ meta, children }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Seo meta={meta} />
+        {/* Google Analytics 4 */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`,
+          }}
+        />
       </head>
       <body className={meta.bodyClass || 'inner-page'}>
         <Header />
