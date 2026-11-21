@@ -7,6 +7,9 @@ export const SITE_NAME = 'Nitiksham';
 export const CONTACT_EMAIL = 'contact@nitiksham.com';
 export const ADDRESS_LINE = 'Karnal, Haryana – 132001, India';
 
+// Google Analytics 4 Measurement ID (gtag.js, loaded in Layout <head>).
+export const GA_MEASUREMENT_ID = 'G-0ZVJM3BP40';
+
 // Public pages in the sitemap (the 15 WordPress routes + software hub
 // + 2 software product intro pages).
 export const SITEMAP_PATHS = [
