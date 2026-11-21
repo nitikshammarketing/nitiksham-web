@@ -34,8 +34,10 @@ export const SITEMAP_PATHS = [
 // in the header, the products section on /software/, and the footer links —
 // add a product here and it appears in all three. Each product also needs
 // an intro page in src/pages/<slug>.jsx and a sitemap entry above.
-// appUrl/demoUrl/loginUrl are the live Render apps; no demo credentials
-// are published anywhere on this site.
+// appUrl/demoUrl/loginUrl are the live production apps (Stock-Desk on its
+// GoDaddy domain stock.nitiksham.com; HR still on Render until
+// hrm.nitiksham.com goes live); no demo credentials are published
+// anywhere on this site.
 export const SOFTWARE_PRODUCTS = [
   {
     name: 'Nitik HR Management',
@@ -78,10 +80,10 @@ export const SOFTWARE_PRODUCTS = [
     tagline: 'Stock, packets and labels — always in order.',
     description:
       'A multi-client inventory and stock workspace — packet-wise stock with barcode labels, built for teams working together.',
-    appUrl: 'https://nitik-stock-desk.onrender.com',
-    demoUrl: 'https://nitik-stock-desk.onrender.com/demo/',
+    appUrl: 'https://stock.nitiksham.com',
+    demoUrl: 'https://stock.nitiksham.com/demo/',
     demoNote: 'Open the public demo — no login needed.',
-    loginUrl: 'https://nitik-stock-desk.onrender.com',
+    loginUrl: 'https://stock.nitiksham.com',
     features: [
       {
         title: 'Packet-wise stock',
